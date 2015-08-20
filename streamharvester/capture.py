@@ -3,6 +3,7 @@ import datetime
 
 import livestreamer
 import cv2
+import dateutil.tz
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +20,11 @@ def capture_stations(stations):
                 caps.append(cap)
     for cap in caps:
         info = {}
-        t = datetime.datetime.now()
+        info['station'] = station['id']
+        info['camera'] = camera['id']
+        info['imgtype'] = 'snap'
+        info['extension'] = 'jpg'
+        t = datetime.datetime.now(dateutil.tz.tzutc())
         succes, img_bgr = cap.read()
         info['t'] = t
         img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)

@@ -4,13 +4,13 @@
             "id": "scheveningen",
             "cameras": [
                 {
-                    "id": "SCH0000",
+                    "id": "c1",
                     "url": "rtmp://stream1.streamink.nl:80/live/sys1.stream",
                     "type": "livestream",
                     "stream": "best"
                 },
                 {
-                    "id": "SCH0001",
+                    "id": "c2",
                     "url": "rtmp://stream1.streamink.nl:80/live/sys2.stream",
                     "type": "livestream",
                     "stream": "best"
