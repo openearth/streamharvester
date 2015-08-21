@@ -2,6 +2,18 @@
     "stations": [
         {
             "id": "scheveningen",
+            "products": [
+                {
+                    "type": "snap",
+                    "interval.product": "10m"
+                },
+                {
+                    "type": "mean",
+                    "interval.product": "10m",
+                    "n": 10,
+                    "interval.samples": "1s"
+                }
+            ],
             "cameras": [
                 {
                     "id": "c1",

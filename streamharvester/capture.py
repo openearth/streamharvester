@@ -10,24 +10,27 @@ logger = logging.getLogger(__name__)
 
 def capture_stations(stations):
     # capture objects
-    caps = []
+    infos = []
     for station in stations:
         for camera in station['cameras']:
             if camera['type'] == 'livestream':
                 streams = livestreamer.streams(camera['url'])
                 stream = streams[camera['stream']]
-                cap = stream_capture(stream)
-                caps.append(cap)
-    for cap in caps:
-        info = {}
-        info['station'] = station['id']
-        info['camera'] = camera['id']
-        info['imgtype'] = 'snap'
-        info['extension'] = 'jpg'
-        t = datetime.datetime.now(dateutil.tz.tzutc())
-        succes, img_bgr = cap.read()
+                info = {}
+                info['cap'] = stream_capture(stream)
+                info['station'] = station['id']
+                info['camera'] = camera['id']
+                info['imgtype'] = 'snap'
+                info['extension'] = 'jpg'
+                infos.append(info)
+    # capture info
+    for info in infos:
+        utc = dateutil.tz.tzutc()
+        t = datetime.datetime.now(utc)
+        succes, img_bgr = info['cap'].read()
         info['t'] = t
         img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+        logger.debug('captured: %s', info)
         yield img_rgb, info
 
 
