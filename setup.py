@@ -25,11 +25,11 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version='1.2.0',
 
-    description='Navigation',
+    description='Harvest streams',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/pypa/streamharvester',
+    url='https://github.com/openearth/streamharvester',
 
     # Author details
     author='Fedor Baart',
@@ -78,18 +78,17 @@ setup(
     install_requires=[
         'netCDF4',
         'numpy',
-        'scikit-image'
+        'scikit-image',
+        'livestreamer'
     ],
+    # TODO:
+    # conditional add futures
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
     # for example:
     # $ pip install -e .[dev,test]
     extras_require={
-        'plot': [
-            'cmocean',
-            'matplotlib'
-        ],
         'test': [
             'coverage'
         ],

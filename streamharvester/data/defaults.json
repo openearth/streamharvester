@@ -5,13 +5,16 @@
             "products": [
                 {
                     "type": "snap",
-                    "interval.product": "10m"
+                    "interval.product": "10m",
+                    "n": 10,
+                    "extension": "jpg"
                 },
                 {
                     "type": "mean",
                     "interval.product": "10m",
                     "n": 10,
-                    "interval.samples": "1s"
+                    "interval.samples": "1s",
+                    "extension": "jpg"
                 }
             ],
             "cameras": [
