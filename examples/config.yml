@@ -1,0 +1,35 @@
+- name: Scheveningen
+  cameras:
+    - name: c1
+      type: stream
+      url: rtmp://stream1.streamink.nl:80/live/sys1.stream
+    - name: c2
+      type: stream
+      url: rtmp://stream1.streamink.nl:80/live/sys2.stream
+    - name: webcam
+      type: usb
+      id: 0
+  collect:
+    - name: snap
+      type: collect.snap
+      interval: 60
+    - name: statistics
+      type: collect.statistics
+      interval: 600
+      duration: 60
+      fps: 2
+    - name: stream
+      type: collect.stream
+      resolution: [400, 300]
+      encoding: webm
+      fps: 2
+  products:
+    - name: count people
+      source: snap
+      type: products.people
+    - name: background subtract
+      source: snap
+      type: products.background_subtract
+    - name: merge
+      source: snap
+      type: products.merge

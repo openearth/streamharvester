@@ -76,10 +76,13 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
+        'pyyaml',
         'netCDF4',
         'numpy',
         'scikit-image',
-        'livestreamer'
+        'livestreamer',
+        'celery[sqlalchemy]'
+        # opencv is also a requirement but that is best not installed through pypi
     ],
     # TODO:
     # conditional add futures
