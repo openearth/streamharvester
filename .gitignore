@@ -1,3 +1,9 @@
+# images and videos that ended up in the root
+/*.jpg
+/*.png
+/*.flv
+/*.mp4
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
