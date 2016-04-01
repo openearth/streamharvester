@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
-argusname = re.compile(
+verbose_name = re.compile(
     r'(?P<timestamp>\d+)'   # timestamp
     r'\.'
     r'(?P<weekday>\w+)'     # short day
@@ -40,7 +40,7 @@ argusname = re.compile(
 )
 
 
-def generate_filename_argus(info):
+def generate_filename_verbose(info):
     """generate a filename based on the convention"""
     date_fmt = "%a.%b.%d_%H_%M_%S.%Z.%Y"
     variables = {}
@@ -97,8 +97,8 @@ def generate_filename_basic(info):
 
 
 def generate_filename(info, convention='basic'):
-    if convention == 'argus':
-        filename = generate_filename_argus(info)
+    if convention == 'verbose':
+        filename = generate_filename_verbose(info)
     elif convention == 'basic':
         filename = generate_filename_basic(info)
     return filename
